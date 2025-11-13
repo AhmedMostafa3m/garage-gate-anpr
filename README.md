@@ -16,3 +16,29 @@ garage-system/
 ├── README.md             # Installation and usage documentation
 └── .gitignore            # Prevent sensitive or unnecessary files from being tracked.
 ```
+# 🚗 Garage Access Control System
+
+A Raspberry Pi-based automatic gate system using license plate recognition (ANPR).
+
+## 🧱 Project Structure
+See the `/app` directory for core components:
+- `anpr.py`: Detects license plates using OpenCV.
+- `controller.py`: Controls the servo motor for the gate.
+- `database.py`: Stores authorized license plates (SQLite).
+- `main.py`: Entry point — integrates all modules.
+- `utils/`: Image preprocessing helpers.
+
+## ⚙️ Setup
+```bash
+git clone https://github.com/yourusername/garage-system.git
+cd garage-system
+pip install -r requirements.txt
+
+▶️ Run
+```
+python app/main.py
+```
+🧩 Hardware
+
+See static/wiring-diagram.png for servo and GPIO connections.
+
