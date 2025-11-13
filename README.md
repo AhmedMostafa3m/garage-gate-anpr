@@ -43,12 +43,17 @@ Key Features
 ✅ Runs standalone for quick testing with any image.
 
 ✅ Automatic OCR integration
-* Uses LicensePlateRecognizer.recognize_plate() which returns both the annotated image and detected plate texts.\n
-✅ Multi-plate handling\n
-* If multiple plates are detected (e.g., nearby cars), each one is checked against the database.\n
+
+* Uses LicensePlateRecognizer.recognize_plate() which returns both the annotated image and detected plate texts.
+  
+✅ Multi-plate handling
+
+* If multiple plates are detected (e.g., nearby cars), each one is checked against the database.
 * The gate opens immediately once one plate matches an authorized entry.
-✅ Console logging\n
-* Clear feedback at every stage of the process for easier debugging and monitoring.\n
+  
+✅ Console logging
+
+* Clear feedback at every stage of the process for easier debugging and monitoring.
 
 ## ⚙️ Setup
 ```bash
@@ -60,7 +65,5 @@ pip install -r requirements.txt
 ```
 python app/main.py
 ```
-🧩 Hardware
 
-See static/wiring-diagram.png for servo and GPIO connections.
 
