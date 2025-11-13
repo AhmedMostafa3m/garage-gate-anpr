@@ -1,0 +1,8 @@
+* this is just a placeholder I included in the project structure to represent
+* where I could store my hardware wiring diagram (for documentation purposes).
+
+* we’ll need to create or download one showing our Raspberry Pi connects to:
+
+* the servo motor controlling the gate, and
+
+* any other components (like sensors or LEDs, if you add them later).
