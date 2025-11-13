@@ -1,5 +1,7 @@
 # Garage Gate ANPR
 
+![tap image]()
+
 This repository contains the code and resources for the Garage Gate Automatic Number Plate Recognition (ANPR) system.
 ```
 garage-system/
@@ -27,6 +29,26 @@ See the `/app` directory for core components:
 - `database.py`: Stores authorized license plates (SQLite).
 - `main.py`: Entry point — integrates all modules.
 - `utils/`: Image preprocessing helpers.
+
+Key Features
+
+✅ OpenCV Haar Cascade detects license plate regions.
+
+✅ EasyOCR reads plate text automatically.
+
+✅ Text cleaning removes noise and formats plates (e.g. ABC1234).
+
+✅ Returns both the annotated image and recognized plate numbers for easy use in main.py.
+
+✅ Runs standalone for quick testing with any image.
+
+✅ Automatic OCR integration
+* Uses LicensePlateRecognizer.recognize_plate() which returns both the annotated image and detected plate texts.
+✅ Multi-plate handling
+* If multiple plates are detected (e.g., nearby cars), each one is checked against the database.
+* The gate opens immediately once one plate matches an authorized entry.
+✅ Console logging
+* Clear feedback at every stage of the process for easier debugging and monitoring.
 
 ## ⚙️ Setup
 ```bash
