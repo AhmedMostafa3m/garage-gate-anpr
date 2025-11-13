@@ -1,6 +1,6 @@
 # Garage Gate ANPR
 
-![tap image]()
+![tap image](https://github.com/AhmedMostafa3m/garage-gate-anpr/blob/5cf15d812d24d267ca93d2b6311554ee4f561819/static/Raspberry_pi_Servo_Wiring_Diagram.png)
 
 This repository contains the code and resources for the Garage Gate Automatic Number Plate Recognition (ANPR) system.
 ```
@@ -43,12 +43,12 @@ Key Features
 ✅ Runs standalone for quick testing with any image.
 
 ✅ Automatic OCR integration
-* Uses LicensePlateRecognizer.recognize_plate() which returns both the annotated image and detected plate texts.
-✅ Multi-plate handling
-* If multiple plates are detected (e.g., nearby cars), each one is checked against the database.
+* Uses LicensePlateRecognizer.recognize_plate() which returns both the annotated image and detected plate texts.\n
+✅ Multi-plate handling\n
+* If multiple plates are detected (e.g., nearby cars), each one is checked against the database.\n
 * The gate opens immediately once one plate matches an authorized entry.
-✅ Console logging
-* Clear feedback at every stage of the process for easier debugging and monitoring.
+✅ Console logging\n
+* Clear feedback at every stage of the process for easier debugging and monitoring.\n
 
 ## ⚙️ Setup
 ```bash
