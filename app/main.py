@@ -1,44 +1,61 @@
-# app/main.py
-
 import cv2
-from app.anpr.py import LicensePlateRecognizer
+from app.anpr import LicensePlateRecognizer
 from app.database import Database
 from app.controller import GateController
 from app.utils.image_utils import preprocess_image
 
 
 def main():
+    print("🚗 Starting Garage Access Control System...")
     db = Database()
     recognizer = LicensePlateRecognizer()
     controller = GateController()
 
-    # Example: authorize some plates manually
+    # Example: Add authorized plates (you can later manage this via a GUI or CLI)
     db.add_plate("ABC1234")
+    db.add_plate("XYZ9876")
 
-    # Load test image (replace with video/camera in production)
+    # Load a test image (replace this with live camera feed later)
     image = cv2.imread("test_image.jpg")
     if image is None:
-        print("❌ Error: test_image.jpg not found.")
+        print("❌ Error: test_image.jpg not found in project root.")
+        controller.cleanup()
         return
 
+    # Preprocess for better detection
     processed = preprocess_image(image)
-    result = recognizer.recognize_plate(processed)
 
-    # Here, integrate OCR (you can use EasyOCR or PaddleOCR to extract plate text)
-    # For now, we’ll simulate:
-    detected_plate = "ABC1234"  # Placeholder for real OCR result
+    # Detect and recognize plates
+    annotated_image, detected_plates = recognizer.recognize_plate(processed)
 
-    if db.is_authorized(detected_plate):
-        print(f"✅ Plate {detected_plate} authorized — opening gate.")
-        controller.open_gate()
+    if not detected_plates:
+        print("⚠️ No license plates detected.")
     else:
-        print(f"🚫 Plate {detected_plate} not authorized — access denied.")
+        print(f"🔍 Detected plates: {detected_plates}")
 
-    cv2.imshow("Result", result)
+        # Check each detected plate
+        authorized = False
+        for plate in detected_plates:
+            if db.is_authorized(plate):
+                print(f"✅ Plate {plate} is authorized. Opening gate...")
+                controller.open_gate()
+                authorized = True
+                break  # No need to check others once gate opens
+            else:
+                print(f"🚫 Plate {plate} is NOT authorized.")
+
+        if not authorized:
+            print("❌ No authorized plates detected. Access denied.")
+
+    # Show image with detection and recognized text
+    cv2.imshow("License Plate Recognition", annotated_image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
     controller.cleanup()
+    print("🟢 System shutdown complete.")
 
 
 if __name__ == "__main__":
     main()
+
