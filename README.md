@@ -1,7 +1,7 @@
 # Garage Gate ANPR
 
 This repository contains the code and resources for the Garage Gate Automatic Number Plate Recognition (ANPR) system.
-
+```
 garage-system/
 ├── app/
 │   ├── anpr.py           # License plate recognition logic
@@ -15,4 +15,4 @@ garage-system/
 ├── requirements.txt      # Python dependencies.
 ├── README.md             # Installation and usage documentation
 └── .gitignore            # Prevent sensitive or unnecessary files from being tracked.
-
+```
